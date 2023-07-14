@@ -1,5 +1,5 @@
 import {TextInput, Pressable, FlatList, StyleSheet, Text, View, Image, Button, Modal, Dimensions } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Touchable } from 'react-native'
 
 const ListStudents = [
@@ -30,19 +30,54 @@ const StudentsScreen = () => {
   const [modalUpdateStudent, setModalUpdateStudent] = useState(false)
   const [modalDeleteStudent, setModalDeleteStudent] = useState(false)
   const [index, setIndex] = useState(null)
-  const [studentUpdate, setStudentUpdate] = useState({name: '', address: '', phone: ''})
+  const [studentUpdate, setStudentUpdate] = useState(students.at(index))
   const handleDelete = (id) => {
     const updatedList = students.filter(item => item.id !== id);
     setStudents(updatedList);
   }
-  const handleUpdate = (id, studentUpdate) => {
+  const handleUpdate = () => {
     const updatedList = students.map(item => {
-      if (item.id === id) {
+      if (item.id === studentUpdate.id) {
         return {
           ...item,
-    }}});
+          ...studentUpdate,
+        };
+      }
+      return item;
+    });
     setStudents(updatedList);
+
+    // console.log(updatedList)
+    // console.log(students)
+    // asynchronous tại updatedList và students vẫn chưa được cập nhật
+    // tại sao vậy?
+    // cần phải tìm hiểu thêm về cơ chế hoạt động của useState
+    // cơ chế hoạt động của useState là gì?
+    // useState là một function trả về một mảng gồm 2 phần tử là state và setState 
+    // state là giá trị hiện tại của state
+    // setState là một function có thể thay đổi giá trị của state
+    // khi gọi setState thì React sẽ re-render lại component
+    // khi re-render lại component thì state sẽ được cập nhật
+    // nhưng ở đây thì sao?
+    // khi console.log(students) sau khi setStudents() thì students chưa được cập nhật
+    // vậy làm sao để biết được khi nào state đã được cập nhật?
+    // khi nào state đã được cập nhật thì React sẽ re-render lại component
+    // khi re-render lại component thì useEffect sẽ được gọi
+    // useEffect sẽ được gọi khi nào?
+    // useEffect sẽ được gọi khi component được render lần đầu tiên
+    // useEffect sẽ được gọi khi state thay đổi
+    // useEffect sẽ được gọi khi props thay đổi
+    // useEffect sẽ được gọi khi context thay đổi
+    // useEffect sẽ được gọi khi ref thay đổi
+    // useEffect sẽ được gọi khi component unmount
+    // useEffect sẽ được gọi khi nào thì phụ thuộc vào tham số thứ 2 của nó
+    // tham số thứ 2 của useEffect là một mảng
+    // mảng này chứa các giá trị phụ thuộc
+    // nếu mảng này rỗng thì useEffect sẽ được gọi khi component được render lần đầu tiên
   }
+  useEffect(() => {
+    console.log(students)
+  }, [students]);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Students Screen</Text>
@@ -71,8 +106,9 @@ const StudentsScreen = () => {
             <Pressable
               onPress={() => {
                 setIndex(index)
+                setStudentUpdate(students.at(index))
                 setModalUpdateStudent(true)
-                console.log("update")}}>
+                }}>
               <Image
                 source={{uri: 'https://img.icons8.com/ios/50/000000/edit--v1.png'}}
                 style={styles.StyleIcon}
@@ -104,19 +140,19 @@ const StudentsScreen = () => {
               defaultValue={students.at(index).name} 
               editable={true}
               style={styles.inputTextUpdate}
-              onChangeText={(text) => setStudentUpdate({name: text})}
+              onChangeText={(text) => setStudentUpdate({ ...studentUpdate , name: text})}
               />
             <TextInput 
               defaultValue={students.at(index).address}
               editable={true} 
               style={styles.inputTextUpdate}
-              onChangeText={(text) => setStudentUpdate({address: text})}
+              onChangeText={(text) => setStudentUpdate({ ...studentUpdate , address: text})}
               />
             <TextInput 
               defaultValue={students.at(index).phone} 
               editable={true}
               style={styles.inputTextUpdate}
-              onChangeText={(text) => setStudentUpdate({phone: text})}
+              onChangeText={(text) => setStudentUpdate({ ...studentUpdate ,phone: text})}
               />
             <View style={{
               flexDirection: 'row',
@@ -124,7 +160,10 @@ const StudentsScreen = () => {
               }}>
               <Pressable 
                 style={styles.buttonUpdateModal}
-                onPress={() => handleUpdate(item.id, studentUpdate)}>
+                onPress={() => {
+                  handleUpdate();
+                  setModalUpdateStudent(!modalUpdateStudent)
+                }}>
                 <Text style={{fontSize:25}}>Update</Text>
               </Pressable>
               <Pressable 
