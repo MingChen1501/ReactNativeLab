@@ -39,7 +39,6 @@ const StudentsScreen = () => {
     const updatedList = students.map(item => {
       if (item.id === studentUpdate.id) {
         return {
-          ...item,
           ...studentUpdate,
         };
       }
