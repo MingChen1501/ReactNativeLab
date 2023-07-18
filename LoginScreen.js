@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import ButtonView from './ButtonView'
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
   return (
@@ -25,6 +25,7 @@ const LoginScreen = () => {
         title="login"
         marginTop={20}
         account={{username, password}}
+        navigation={props.navigation}
         />
     </View>
   )

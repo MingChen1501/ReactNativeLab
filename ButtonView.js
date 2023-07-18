@@ -10,7 +10,11 @@ const ButtonView = (props) => {
         {marginTop: props.marginTop}
     ]}
     onPress={() => {
-      console.log(props.account)
+      if (props.account.username === "admin" 
+      && props.account.password === "admin")
+        props.navigation.navigate("Students")
+      else
+        alert("Wrong username or password")
     }}>
     <Text>{props.title}</Text>
     </Pressable>

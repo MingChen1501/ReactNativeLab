@@ -1,7 +1,7 @@
 
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-const MainScreen = () => {
+const MainScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text style={{
@@ -28,7 +28,9 @@ const MainScreen = () => {
                 borderRadius: 20,
                 justifyContent: 'center',
                 alignItems: "center"
-            }}>
+            }}
+            onPress={() => {props.navigation.navigate("Login")}}
+            >
             <Text>Next</Text>
             </Pressable>
         </View>
