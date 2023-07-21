@@ -1,6 +1,5 @@
 import {TextInput, Pressable, FlatList, StyleSheet, Text, View, Image, Button, Modal, Dimensions } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Touchable } from 'react-native'
 
 const ListStudents = [
   {
@@ -75,7 +74,6 @@ const StudentsScreen = () => {
     // nếu mảng này rỗng thì useEffect sẽ được gọi khi component được render lần đầu tiên
   }
   useEffect(() => {
-    console.log(students)
   }, [students]);
   return (
     <View style={styles.container}>
