@@ -33,8 +33,35 @@ const LoginScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-      LoginScreen
+      Login
       </Text>
+      <View style={{
+        marginTop: 70,
+        flexDirection: 'row',
+        width: '50%',
+        justifyContent: 'space-around',
+      }}>
+        <TouchableOpacity>
+          <Text style={{
+            color: "#0386D0",
+            fontSize: "25px",
+            fontStyle: "normal",
+            fontWeight: "400",
+            lineHeight: "normal"
+          }}>
+            Login
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={{
+            color: "#A6A6A6",
+            fontSize: "25px",
+            fontStyle: "normal",
+            fontWeight: "400",
+            lineHeight: "normal"
+          }}>Register</Text>
+        </TouchableOpacity>
+      </View>
       <TextInput 
         style={styles.inputText}
         placeholder="enter your username"
@@ -89,7 +116,8 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexDirection: "column",
+        flex: 3,
         backgroundColor: "white",
         alignItems: "center"
     },
@@ -106,8 +134,12 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 50,
-        fontSize: 50,
-        color: "black"
+        color: "#000000",
+        textAlign: "center",
+        fontSize: 40,
+        fontStyle: 'normal',
+        fontWeight: '400',
+        lineHeight: 47.2,
     },
     passwordInput: {
       flex: 1,

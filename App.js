@@ -1,10 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, StatusBar} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import StudentsScreen  from './StudentsScreen';
 import MainScreen from './MainScreen';
 import LoginScreen from './LoginScreen';
+import { useEffect } from 'react';
 
 const Stack = createStackNavigator();
 
