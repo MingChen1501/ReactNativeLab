@@ -197,8 +197,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 20,
-    width: Dimensions.get('window').width - 50,
-    height: Dimensions.get('window').height - 300,
+    width: '90%',
+    height: '70%',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
