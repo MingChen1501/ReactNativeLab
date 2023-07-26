@@ -20,9 +20,16 @@ function MyStack() {
   return (
     <Stack.Navigator 
     initialRouteName="Main">
-      <Stack.Screen options={{headerShown: false}} name="Students" component={StudentsScreen} />
-      <Stack.Screen name="Main" component={MainScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen 
+        name="Students" 
+        component={StudentsScreen} />
+      <Stack.Screen 
+        name="Main" 
+        component={MainScreen} />
+      <Stack.Screen 
+        name="Login" 
+        component={LoginScreen} 
+        options={{headerShown: false}}/>
     </Stack.Navigator>
   );
 }

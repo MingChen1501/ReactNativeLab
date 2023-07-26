@@ -1,8 +1,9 @@
-import { Dimensions, StyleSheet, Text, TextInput, View, TouchableOpacity, Modal } from 'react-native'
+import { Dimensions, StyleSheet, Text, TextInput, View, TouchableOpacity, Modal, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ButtonView from './ButtonView'
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons'; 
 import LoginErrorCode from './LoginErrorCode';
+import SvgComponent from './SvgComponent';
 
 const LoginScreen = (props) => {
   const [username, setUserName] = useState("")
@@ -11,6 +12,11 @@ const LoginScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [errorCode, setErrorCode] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggleCheck = () => {
+    setIsChecked((prevIsChecked) => !prevIsChecked);
+  };
 
   const onModalClose = () => {
     setModalVisible(false);
@@ -40,14 +46,14 @@ const LoginScreen = (props) => {
         flexDirection: 'row',
         width: '50%',
         justifyContent: 'space-around',
+        marginBottom: 53
       }}>
-        <TouchableOpacity>
+        <TouchableOpacity
+        style={{borderBottomWidth: 1}}>
           <Text style={{
             color: "#0386D0",
-            fontSize: "25px",
-            fontStyle: "normal",
             fontWeight: "400",
-            lineHeight: "normal"
+            fontSize: 25,
           }}>
             Login
           </Text>
@@ -55,39 +61,77 @@ const LoginScreen = (props) => {
         <TouchableOpacity>
           <Text style={{
             color: "#A6A6A6",
-            fontSize: "25px",
-            fontStyle: "normal",
             fontWeight: "400",
-            lineHeight: "normal"
+            fontSize: 25,
           }}>Register</Text>
         </TouchableOpacity>
       </View>
-      <TextInput 
-        style={styles.inputText}
-        placeholder="enter your username"
-        onChangeText={(text) => setUserName(text)}
-        />
-      <View style={styles.passwordContainer}>
+      <View  style={styles.passwordContainer}>
+        <AntDesign name="mail" size={24} color="gray" />
         <TextInput 
           style={styles.passwordInput}
-          placeholder="enter your password"
+          placeholder="Email Address"
+          onChangeText={(text) => setUserName(text)}
+          />
+      </View>
+      <View style={styles.passwordContainer}>
+        <Ionicons name="lock-closed-outline" size={24} color="gray" />
+        <TextInput 
+          style={styles.passwordInput}
+          placeholder="Password"
           secureTextEntry={!showPassword}
           onChangeText={(text) => setPassword(text)}
           />
           <TouchableOpacity 
             style={styles.eyeIcon}
             onPress={togglePasswordVisibility}>
-            <MaterialIcons name={showPassword ? 'visibility-off' : 'visibility'} size={24} color="gray" />
+            <MaterialIcons name={showPassword ? 'visibility' : 'visibility-off'} size={24} color="gray" />
           </TouchableOpacity>
       </View>
+      <View style={{
+        flexDirection: 'row',
+        width: '80%',
+        justifyContent: 'space-between',
+      }}>
+        <TouchableOpacity 
+          onPress={handleToggleCheck}
+          style={{
+            flexDirection: 'row',
+            width: '40%',
+          }}>
+          <AntDesign 
+            name={isChecked ? 'closesquareo' : 'checksquareo'}
+            size={24} 
+            color="gray" />
+          <Text style={{
+            fontSize: 21,
+            marginLeft: 10,
+            color: 'gray'
+          }}>Remember Me</Text>
+        </TouchableOpacity>
+       <TouchableOpacity
+        style={{width: '40%'}}>
+          <Text style={{
+            color: "#0386D0",
+            fontWeight: "400",
+            fontSize: 21,
+          }}>
+            Forget Password
+          </Text>
+        </TouchableOpacity>
+      </View>
       <ButtonView
-        title="login"
+        title="Login"
         marginTop={20}
         account={{username, password}}
         navigation={props.navigation}
         setModalVisible={setModalVisible}
         setErrorCode={setErrorCode}
         />
+        
+      <View>
+        <SvgComponent/>
+      </View>
         {/* 
         **mingchen note:
         LoginScreen have state modalVisible, which is passed to ButtonView as props callback setModalVisible
@@ -116,33 +160,33 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column",
-        flex: 3,
-        backgroundColor: "white",
-        alignItems: "center"
+      flexDirection: "column",
+      flex: 3,
+      backgroundColor: "white",
+      alignItems: "center"
     },
     passwordContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      width: '95%',
+      width: '80%',
       height: 40,
       borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      paddingHorizontal: 10,
-      marginBottom: 10,
+      borderBottomWidth: 1,
+      marginBottom: 50,
     },
     title: {
-        marginTop: 50,
-        color: "#000000",
-        textAlign: "center",
-        fontSize: 40,
-        fontStyle: 'normal',
-        fontWeight: '400',
-        lineHeight: 47.2,
+      marginTop: 50,
+      color: "#000000",
+      textAlign: "center",
+      fontSize: 40,
+      fontStyle: 'normal',
+      fontWeight: '400',
+      lineHeight: 47.2,
     },
     passwordInput: {
+      marginLeft: 10,
       flex: 1,
+      fontSize: 20,
     },
     inputText: {
       width: '95%',

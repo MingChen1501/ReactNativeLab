@@ -49,7 +49,7 @@ const ButtonView = (props) => {
       }
     }}
     disabled={usernameAndPasswordValid()}>
-    <Text>{props.title}</Text>
+    <Text style={styles.text}>{props.title}</Text>
     </Pressable>
   )
 }
@@ -59,11 +59,15 @@ export default ButtonView
 const styles = StyleSheet.create({
     stylePressable: {
         margin: 10,
-        backgroundColor: "green",
-        width: 100,
+        backgroundColor: "#01579B",
+        width: '80%',
         height: 40,
-        borderRadius: 20,
+        borderRadius: 5,
         justifyContent: 'center',
         alignItems: "center",
+    },
+    text: {
+      fontSize: 25,
+      color: "white",
     }
 })

@@ -17,7 +17,7 @@ const MainScreen = (props) => {
                 }}>
                 </Image>
                 <Image style={styles.img}
-                source={require("./images/CanNang.png")}>
+                source={require('./public/images/login-register.png')}>
                 </Image>
             </View>
             <Pressable style={{
