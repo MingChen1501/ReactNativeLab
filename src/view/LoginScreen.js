@@ -1,9 +1,9 @@
 import { Dimensions, StyleSheet, Text, TextInput, View, TouchableOpacity, Modal, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import ButtonView from './ButtonView'
+import ButtonView from '../component/ButtonView'
 import { MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons'; 
-import LoginErrorCode from './LoginErrorCode';
-import SvgComponent from './SvgComponent';
+import LoginErrorCode from '../utils/LoginErrorCode';
+import SvgComponent from '../component/SvgComponent';
 
 const LoginScreen = (props) => {
   const [username, setUserName] = useState("")

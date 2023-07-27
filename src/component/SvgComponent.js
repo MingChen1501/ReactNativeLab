@@ -7,7 +7,7 @@ function SvgComponent(props) {
   return (
     <View>
       <Image
-        source={require('./public/images/login-register.png')}
+        source={require('../public/images/login-register.png')}
         style={{ 
           width: '70%', 
           height: '75%', 
