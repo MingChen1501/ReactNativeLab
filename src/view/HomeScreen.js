@@ -1,7 +1,7 @@
 
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-const MainScreen = (props) => {
+const HomeScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text style={{
@@ -36,7 +36,7 @@ const MainScreen = (props) => {
         </View>
     )
 }
-export default MainScreen
+export default HomeScreen
 
 const styles = StyleSheet.create({
     container: {
