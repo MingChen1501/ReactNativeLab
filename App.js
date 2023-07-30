@@ -21,7 +21,7 @@ export default function App() {
 function MyStack() {
   return (
     <Stack.Navigator 
-    initialRouteName="Register">
+    initialRouteName="Login">
       <Stack.Screen options={{headerShown: false}} name="Students" component={StudentsScreen} />
       <Stack.Screen options={{headerShown: false}} name="Main" component={MainScreen} />
       <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />

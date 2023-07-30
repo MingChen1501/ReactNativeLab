@@ -133,9 +133,7 @@ const LoginScreen = (props) => {
         setModalVisible={setModalVisible}
         setErrorCode={setErrorCode}
         />
-      <View>
-        <SvgComponent/>
-      </View>
+      <SvgComponent/>
         {/* 
         **mingchen note:
         LoginScreen have state modalVisible, which is passed to ButtonView as props callback setModalVisible
