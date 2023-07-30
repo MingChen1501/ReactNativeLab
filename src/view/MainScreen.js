@@ -16,9 +16,9 @@ const MainScreen = (props) => {
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
                 }}>
                 </Image>
-                <Image style={styles.img}
+                {/* <Image style={styles.img}
                 source={require('../public/images/login-register.png')}>
-                </Image>
+                </Image> */}
             </View>
             <Pressable style={{
                 margin: 10,

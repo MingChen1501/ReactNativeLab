@@ -6,7 +6,7 @@ import { View, Image, StyleSheet } from "react-native"
 function SvgComponent(props) {
   return (
     <View>
-      <Image
+      {/* <Image
         source={require('../public/images/login-register.png')}
         style={{ 
           width: '70%', 
@@ -15,7 +15,7 @@ function SvgComponent(props) {
           top: '15%', // Đặt ở giữa theo chiều dọc
           left: '15%', // Đặt ở giữa theo chiều ngang
           }}
-      />
+      /> */}
       <Svg
         xmlns="http://www.w3.org/2000/svg"
         width={414}

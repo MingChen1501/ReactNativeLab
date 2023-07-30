@@ -39,7 +39,7 @@ const LoginScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-      Login
+      Register
       </Text>
       <View style={{
         marginTop: 70,
@@ -48,22 +48,23 @@ const LoginScreen = (props) => {
         justifyContent: 'space-around',
         marginBottom: 53
       }}>
-        <TouchableOpacity
-        style={{borderBottomWidth: 1}}>
+        <TouchableOpacity>
           <Text style={{
-            color: "#0386D0",
+            color: "#A6A6A6",
             fontWeight: "400",
             fontSize: 25,
           }}>
             Login
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{
-            color: "#A6A6A6",
+        <TouchableOpacity
+        style={{borderBottomWidth: 1}}>
+        <Text style={{
+            color: "#0386D0",
             fontWeight: "400",
             fontSize: 25,
-          }}>Register</Text>
+          }}>
+          Register</Text>
         </TouchableOpacity>
       </View>
       <View  style={styles.passwordContainer}>
@@ -88,6 +89,20 @@ const LoginScreen = (props) => {
             <MaterialIcons name={showPassword ? 'visibility' : 'visibility-off'} size={24} color="gray" />
           </TouchableOpacity>
       </View>
+      <View style={styles.passwordContainer}>
+        <Ionicons name="lock-closed-outline" size={24} color="gray" />
+        <TextInput 
+          style={styles.passwordInput}
+          placeholder="Re-Password"
+          secureTextEntry={!showPassword}
+          onChangeText={(text) => setPassword(text)}
+          />
+          <TouchableOpacity 
+            style={styles.eyeIcon}
+            onPress={togglePasswordVisibility}>
+            <MaterialIcons name={showPassword ? 'visibility' : 'visibility-off'} size={24} color="gray" />
+          </TouchableOpacity>
+      </View>
       <View style={{
         flexDirection: 'row',
         width: '80%',
@@ -97,38 +112,27 @@ const LoginScreen = (props) => {
           onPress={handleToggleCheck}
           style={{
             flexDirection: 'row',
-            width: '40%',
+            width: '100%',
           }}>
           <AntDesign 
             name={isChecked ? 'closesquareo' : 'checksquareo'}
             size={24} 
             color="gray" />
           <Text style={{
-            fontSize: 21,
-            marginLeft: 10,
-            color: 'gray'
-          }}>Remember Me</Text>
-        </TouchableOpacity>
-       <TouchableOpacity
-        style={{width: '40%'}}>
-          <Text style={{
+            fontSize: 20,
             color: "#0386D0",
-            fontWeight: "400",
-            fontSize: 21,
-          }}>
-            Forget Password
-          </Text>
+            marginLeft: 10,
+          }}>Agree to Terms and Conditions</Text>
         </TouchableOpacity>
       </View>
       <ButtonView
-        title="Login"
+        title="Register"
         marginTop={20}
         account={{username, password}}
         navigation={props.navigation}
         setModalVisible={setModalVisible}
         setErrorCode={setErrorCode}
         />
-        
       <View>
         <SvgComponent/>
       </View>
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
       marginBottom: 50,
     },
     title: {
-      marginTop: 50,
+      marginTop: 70,
       color: "#000000",
       textAlign: "center",
       fontSize: 40,

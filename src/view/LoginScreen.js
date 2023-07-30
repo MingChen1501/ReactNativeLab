@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
       marginBottom: 50,
     },
     title: {
-      marginTop: 50,
+      marginTop: 70,
       color: "#000000",
       textAlign: "center",
       fontSize: 40,

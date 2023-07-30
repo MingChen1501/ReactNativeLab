@@ -5,7 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import StudentsScreen  from './src/view/StudentsScreen';
 import MainScreen from './src/view/MainScreen';
 import LoginScreen from './src/view/LoginScreen';
-import PostManageScreen from './src/view/PostManageScreen';
+import PostManagerScreen from './src/view/PostManagerScreen';
+import RegisterScreen from './src/view/RegisterScreen';
 import { useEffect } from 'react';
 
 const Stack = createStackNavigator();
@@ -20,10 +21,12 @@ export default function App() {
 function MyStack() {
   return (
     <Stack.Navigator 
-    initialRouteName="Login">
-      <Stack.Screen options={{headerShown: false}} name="Students" component={PostManageScreen} />
+    initialRouteName="Register">
+      <Stack.Screen options={{headerShown: false}} name="Students" component={StudentsScreen} />
       <Stack.Screen options={{headerShown: false}} name="Main" component={MainScreen} />
       <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
+      <Stack.Screen options={{headerShown: false}} name="PostManager" component={PostManagerScreen} />
+      <Stack.Screen options={{headerShown: false}} name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }
