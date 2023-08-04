@@ -10,6 +10,7 @@ import SearchScreen  from './src/view/SearchScreen';
 import HomeScreen from './src/view/HomeScreen';
 import NotificationScreen from './src/view/NotificationScreen';
 import ProfileScreen from "./src/view/ProfileScreen";
+import WritePostScreen from "./src/view/WritePostScreen";
 
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
@@ -24,7 +25,7 @@ export default function App() {
 const MainTabScreen = () => {
   return (
     <tab.Navigator
-      initialRouteName="Search"
+      initialRouteName="Write post"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#0277BD',
@@ -61,6 +62,16 @@ const MainTabScreen = () => {
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="search" color={color} size={size} />
+          ),
+        }}
+      />
+      <tab.Screen
+        name="Write post"
+        component={WritePostScreen}
+        options={{
+          headerShown: true,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="edit" color={color} size={size} />
           ),
         }}
       />
