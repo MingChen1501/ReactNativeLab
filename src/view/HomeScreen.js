@@ -3,54 +3,9 @@ import { TouchableOpacity, StyleSheet, Text, View, Image, Pressable, FlatList } 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-const data = [
-  {
-    "id": 1,
-    "author": {
-      "id": 101,
-      "avatar": "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg",
-      "name": "Tác giả A"
-    },
-    "title": "Bài viết 1",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ... sdfsdffffdffffffffffff Để căn chỉnh vị trí của 2 view text chứa tên tác giả và thời gian post bài trong view headerRight có direction là column, bạn có thể sử dụng thuộc tính alignItems. Thuộc tính alignItems có thể nhận một số giá trị khác nhau, trong đó giá trị flex-start sẽ căn chỉnh các thành phần con ở phía bên trái của trục phụ.",
-    "images": [
-      "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F658ccb8c-bd4f-4803-b5f0-05920d1554a0_1280x1810.jpeg",
-      "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg"
-    ],
-    "published_at": "2023-07-31T12:30:00Z"
-  },
-  {
-    "id": 2,
-    "author": {
-      "id": 102,
-      "avatar": "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg",
-      "name": "Tác giả B"
-    },
-    "title": "Bài viết 2",
-    "content": "Suspendisse non eros facilisis, laoreet odio in, volutpat arcu. ...",
-    "images": [
-      ],
-    "published_at": "2023-07-30T18:45:00Z"
-  },
-  {
-    "id": 3,
-    "author": {
-      "id": 103,
-      "avatar": "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg",
-      "name": "Tác giả C"
-    },
-    "title": "Bài viết 3",
-    "content": "Vestibulum in ipsum vitae nunc pharetra interdum. Sed porttitor purus ...",
-    "images": [
-      "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg",
-      "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg",
-      "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg"
-    ],
-    "published_at": "2023-07-29T09:15:00Z"
-  }
-]
+
 
 //input 2023-07-30T18:45:00Z
 //output 23 hours ago
@@ -58,7 +13,20 @@ const getTimePublish = (published_at) => {
 
 }
 const HomeScreen = (props) => {
-  const [posts, setPosts] = useState(data)
+  const [posts, setPosts] = useState([])
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://172.188.32.218/posts?_sort=published_at&_order=desc');
+      const jsonData = await response.json();
+      setPosts(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchData()
+  }, []);
   const renderItem = ({item}) => {
     return (
       <View style={styles.postContainer}>

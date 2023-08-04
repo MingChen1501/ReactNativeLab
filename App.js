@@ -25,7 +25,7 @@ export default function App() {
 const MainTabScreen = () => {
   return (
     <tab.Navigator
-      initialRouteName="Write post"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#0277BD',
