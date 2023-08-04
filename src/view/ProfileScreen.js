@@ -1,7 +1,7 @@
 
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-const MainScreen = (props) => {
+const ProfileScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text style={{
@@ -16,9 +16,9 @@ const MainScreen = (props) => {
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"
                 }}>
                 </Image>
-                <Image style={styles.img}
-                source={require("./images/CanNang.png")}>
-                </Image>
+                {/* <Image style={styles.img}
+                source={require('../public/images/login-register.png')}>
+                </Image> */}
             </View>
             <Pressable style={{
                 margin: 10,
@@ -36,7 +36,7 @@ const MainScreen = (props) => {
         </View>
     )
 }
-export default MainScreen
+export default ProfileScreen
 
 const styles = StyleSheet.create({
     container: {
