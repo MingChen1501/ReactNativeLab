@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import StudentsScreen  from './src/view/StudentsScreen';
 import HomeScreen from './src/view/HomeScreen';
-import PostManagerScreen from './src/view/PostManagerScreen';
+import NotificationScreen from './src/view/NotificationScreen';
 import ProfileScreen from "./src/view/ProfileScreen";
 
 const Stack = createStackNavigator();
@@ -24,7 +24,7 @@ export default function App() {
 const MainTabScreen = () => {
   return (
     <tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Notification"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#0277BD',
@@ -66,7 +66,7 @@ const MainTabScreen = () => {
       />
       <tab.Screen
         name="Notification"
-        component={PostManagerScreen}
+        component={NotificationScreen}
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
