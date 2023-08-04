@@ -31,8 +31,7 @@ const data = [
     "title": "Bài viết 2",
     "content": "Suspendisse non eros facilisis, laoreet odio in, volutpat arcu. ...",
     "images": [
-      "https://www.shutterstock.com/shutterstock/photos/1883859943/display_1500/stock-photo-the-word-example-is-written-on-a-magnifying-glass-on-a-yellow-background-1883859943.jpg"
-    ],
+      ],
     "published_at": "2023-07-30T18:45:00Z"
   },
   {
@@ -91,10 +90,14 @@ const HomeScreen = (props) => {
             </Text>
           </View>
           <View styles={styles.postImage}>
-            <Image
-              source={{uri: item.images[0]}}
-              resizeMode="contain"
-              style={{width: '100%', height: 300}}/>
+            {/* toán tử 3 ngôi để render JSX */}
+            {item.images[0] ? (
+              <Image
+                source={{uri: item.images[0]}}
+                resizeMode="contain"
+                style={{width: '100%', height: 300}}/>
+               
+            ) : null}
           </View>
         </View>
         <View style={styles.postOperation}>
