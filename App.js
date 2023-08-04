@@ -6,7 +6,7 @@ import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import StudentsScreen  from './src/view/StudentsScreen';
+import SearchScreen  from './src/view/SearchScreen';
 import HomeScreen from './src/view/HomeScreen';
 import NotificationScreen from './src/view/NotificationScreen';
 import ProfileScreen from "./src/view/ProfileScreen";
@@ -24,7 +24,7 @@ export default function App() {
 const MainTabScreen = () => {
   return (
     <tab.Navigator
-      initialRouteName="Notification"
+      initialRouteName="Search"
       screenOptions={{
         headerStyle: {
           backgroundColor: '#0277BD',
@@ -56,7 +56,7 @@ const MainTabScreen = () => {
       />
       <tab.Screen
         name="Search"
-        component={StudentsScreen}
+        component={SearchScreen}
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
