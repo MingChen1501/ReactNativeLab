@@ -5,12 +5,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import StudentsScreen  from './src/view/StudentsScreen';
 import HomeScreen from './src/view/HomeScreen';
-import LoginScreen from './src/view/LoginScreen';
 import PostManagerScreen from './src/view/PostManagerScreen';
-import RegisterScreen from './src/view/RegisterScreen';
-import { useEffect } from 'react';
+import ProfileScreen from "./src/view/ProfileScreen";
 
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
@@ -56,7 +55,7 @@ const MainTabScreen = () => {
         }}
       />
       <tab.Screen
-        name="Students"
+        name="Search"
         component={StudentsScreen}
         options={{
           headerShown: true,
@@ -66,7 +65,7 @@ const MainTabScreen = () => {
         }}
       />
       <tab.Screen
-        name="PostManager"
+        name="Notification"
         component={PostManagerScreen}
         options={{
           headerShown: true,
@@ -76,8 +75,8 @@ const MainTabScreen = () => {
         }}
       />
       <tab.Screen
-        name="Login"
-        component={LoginScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
